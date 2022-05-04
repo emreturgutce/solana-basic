@@ -6,11 +6,11 @@ fn process_instruction(
     accounts: &[AccountInfo],
     instruction_data: &[u8],
 ) -> ProgramResult {
-    msg!(
-        "process_instruction {}: {} accounts, data={:?}",
-        program_id,
-        accounts.len(),
-        instruction_data,
-    );
+    let key: &u8 = instruction_data.first().unwrap();
+    match key {
+        0 => msg!("zero"),
+        1 => msg!("one"),
+        _ => msg!("error"),
+    }
     Ok(())
 }
